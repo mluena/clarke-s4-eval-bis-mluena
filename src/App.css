@@ -1,0 +1,23 @@
+.main-container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin: auto;
+}
+.title {
+font-size: 40px;
+text-align: center;
+color: #1e4e5c;
+}
+.repos_container {
+
+	}
+.repos_title {
+	font-size: 20px;
+
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
