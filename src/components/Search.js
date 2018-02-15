@@ -1,22 +1,18 @@
-import Search from 'search';
+import React from 'react';
 
 class Search extends React.Component {
-	constructor (props) {
-		super (props);
-		this.handleSearch=this.handleSearch.bind(this);
-		this.state = {
-			search: ''
-		}
-	}
-	handleSearch(event) {
-		const searchValor = event.target.value.toUpperCase();
-		this.setState({ search: searchValor  });
-	}
+
 	render () {
 		return (
-			<div className="searcher">
-				<Search /><label className="input-text">Search repositories</label>
-				<input type="text" className="search-input" onChange={this.handleSearch} placeholder="  Search"/>
+			<div className="searcher-selector">
+				<label className="input-search">Search repositories   </label>
+				<input type="text" className="search" onChange={this.props.busqueda} placeholder="   Search"/>
+				<select className="languages-selector" name="languages" onClick={this.props.seleccion}>
+					<option className="language-options" value="">Select a laguage</option>
+				  <option className="language-options" value="CSS">CSS</option>
+				  <option className="language-options" value="HTML">HTML</option>
+				  <option className="language-options" value="JavaScript">JavaScript</option>
+				</select>
 			</div>
 		);
 	}
