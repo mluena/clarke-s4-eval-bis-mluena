@@ -31,7 +31,7 @@ class App extends React.Component {
 									<Repo nombre={printRepo.name}
 												url={printRepo.html_url}
 												descripcion={printRepo.description?
-                            printRepo.description:<img src='questionMark' />}
+                            printRepo.description:<img alt="repo sin descripción" className="nodescription-image" src={questionMark}/>}  
 												lenguaje={printRepo.language} />
 								)
 							}
