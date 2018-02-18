@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
 import Repo from './components/Repo';
 import Search from './components/Search';
+import Avatar from './components/Avatar';
 import questionMark from './images/question.png';
 import './App.css';
+
 
 class App extends React.Component {
 	constructor (props) {
@@ -13,7 +16,8 @@ class App extends React.Component {
 			repos: [],
 			language: '',
 			search: '',
-			selection: ''
+			selection: '',
+			avatar: ''
 		}
 	}
 	componentDidMount () {
@@ -31,7 +35,7 @@ class App extends React.Component {
 									<Repo nombre={printRepo.name}
 												url={printRepo.html_url}
 												descripcion={printRepo.description?
-                            printRepo.description:<img alt="repo sin descripción" className="nodescription-image" src={questionMark}/>}  
+                            printRepo.description:<img alt="repo sin descripción" className="nodescription-image" src={questionMark}/>}
 												lenguaje={printRepo.language} />
 								)
 							}
@@ -51,10 +55,23 @@ class App extends React.Component {
     return (
 			<div className="main-container">
 				<h1 className="title">Repos at Adalab en GitHub</h1>
-				<Search busqueda={this.handleSearch} seleccion={this.handleSelection}/>
-				<ul>
-					{this.writeRepos()}
-				</ul>
+			<ul className="window">
+				<li><Link to='/'><div className="router-buttons">Repositories</div></Link>
+				</li>
+				<li><Link to='/Search repositories'><div className="router-buttons">Search repositories</div></Link>
+				</li>
+			</ul>
+			<Switch>
+				<Route exact path='/' component={Avatar} />
+				<Route path='/Search repositories' render={() => <Search busqueda={this.handleSearch} seleccion={this.handleSelection}/> } />
+
+			</Switch>
+			<ul>
+				{this.writeRepos()}
+			</ul>}
+
+
+
 			</div>
     );
   }
