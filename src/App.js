@@ -30,7 +30,7 @@ class App extends React.Component {
 	writeRepos() {
 			 const reposList = this.state.repos.filter (repo => repo.language.includes(this.state.selection)).filter(repo => repo.name.toUpperCase().includes(this.state.search));
 				 return (
-						 <div className="repos-container">
+						 <li className="repos-container">
 					 		{ reposList.map (printRepo =>
 									<Repo nombre={printRepo.name}
 												url={printRepo.html_url}
@@ -39,7 +39,7 @@ class App extends React.Component {
 												lenguaje={printRepo.language} />
 								)
 							}
-						 </div>);
+						 </li>);
 				 }
 
 	handleSearch(event) {
