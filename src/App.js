@@ -30,16 +30,17 @@ class App extends React.Component {
 	writeRepos() {
 			 const reposList = this.state.repos.filter (repo => repo.language.includes(this.state.selection)).filter(repo => repo.name.toUpperCase().includes(this.state.search));
 				 return (
-						 <li className="repos-container">
+						 <div >
+						 	<ul className="repos-container">
 					 		{ reposList.map (printRepo =>
-									<Repo nombre={printRepo.name}
+									<li className="repos-list" key={printRepo.name}><Repo nombre={printRepo.name}
 												url={printRepo.html_url}
 												descripcion={printRepo.description?
                             printRepo.description:<img alt="repo sin descripción" className="nodescription-image" src={questionMark}/>}
-												lenguaje={printRepo.language} />
+												lenguaje={printRepo.language} />				</li>
 								)
 							}
-						 </li>);
+						 </ul></div>);
 				 }
 
 	handleSearch(event) {
@@ -66,9 +67,9 @@ class App extends React.Component {
 				<Route path='/Search repositories' render={() => <Search busqueda={this.handleSearch} seleccion={this.handleSelection}/> } />
 
 			</Switch>
-			<ul>
+
 				{this.writeRepos()}
-			</ul>}
+		}
 
 
 
