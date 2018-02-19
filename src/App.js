@@ -23,8 +23,8 @@ class App extends React.Component {
 	componentDidMount () {
 		fetch ('https://api.github.com/orgs/Adalab/repos')
 			.then(response => response.json())
-			.then(repos => {
-				this.setState({ repos });
+			.then(json => {
+				this.setState({ repos : json });
 			});
 	}
 	writeRepos() {
